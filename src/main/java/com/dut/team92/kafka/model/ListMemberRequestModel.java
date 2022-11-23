@@ -15,11 +15,11 @@ import java.util.List;
 @NoArgsConstructor
 @ToString
 @Slf4j
-public class ListMemberRequestModel implements BaseModel, Deserializer {
+public class ListMemberRequestModel implements BaseModel, Deserializer<ListMemberRequestModel> {
     private List<MemberRequestModel> memberRequestModels;
 
     @Override
-    public Object deserialize(String s, byte[] bytes) {
+    public ListMemberRequestModel deserialize(String s, byte[] bytes) {
         ListMemberRequestModel obj = null;
         try {
             ObjectMapper mapper = new ObjectMapper();
