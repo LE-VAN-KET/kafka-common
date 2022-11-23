@@ -85,8 +85,6 @@ pipeline{
                 script {
                     sh "echo 'JUnit testing...'"
                     sh "mvn test -s settings.xml"
-//                     sh "echo 'Integration testing...'"
-//                     sh "mvn test -Dtest=IntegrationTest"
                     jacoco(execPattern: 'target/jacoco.exec')
                 }
             }
