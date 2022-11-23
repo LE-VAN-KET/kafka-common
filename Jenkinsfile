@@ -102,7 +102,7 @@ pipeline{
             }
             steps {
                 withSonarQubeEnv(installationName: 'SonarQube') {
-                    sh """mvn -s settings.xml clean verify sonar:sonar -Dsonar.projectKey=kafka-common \
+                    sh """mvn -s settings.xml verify sonar:sonar -Dsonar.projectKey=kafka-common \
                     -Dsonar.host.url=http://146.190.105.184:10000 -Dsonar.login=sqa_13efc056525ae8add04170822913d63831329f84
                     """
                 }
@@ -135,12 +135,13 @@ pipeline{
                 script {
                     // Read POM xml file
                     pom = readMavenPom file: "pom.xml";
+                    echo "${pom.packaging}"
                     // Find built artifact under target folder
                     filesByGlob = findFiles(glob: "target/*.${pom.packaging}");
-
+                    echo "${filesByGlob}"
                     // Extract the path from the File found
                     artifactPath = filesByGlob[0].path;
-
+                    echo "${artifactPath}"
                     // Assign to a boolean response verifying If the artifact name exists
                     artifactExists = fileExists artifactPath;
 
