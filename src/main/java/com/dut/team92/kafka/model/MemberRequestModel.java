@@ -19,4 +19,7 @@ public class MemberRequestModel implements BaseModel{
     private Boolean isSystemAdmin = false;
     private Boolean isDelete = false;
     private String status;
+    private String firstName;
+    private String lastName;
+    private String displayName;
 }
