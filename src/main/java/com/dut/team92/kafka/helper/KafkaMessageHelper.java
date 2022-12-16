@@ -29,6 +29,7 @@ public class KafkaMessageHelper {
             public void onFailure(Throwable ex) {
                 log.error("Error while sending {} with message: {} to topic {}",
                         requestModelName, model.toString(), responseTopicName, ex);
+                throw new RuntimeException(ex);
             }
         };
     }
